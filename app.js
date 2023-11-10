@@ -9,6 +9,22 @@ const db = mongoose.connection
 mongoose.connect(mongoURI, ()=>{
     console.log("Mongoose connection is established")
 })
+const myFirstTweet = {
+    title: 'Deep Thoughts',
+    body: 'Friends, I have been navel-gazing',
+    author: 'Karolin'
+  }
+
+  Tweet.create(myFirstTweet , (error, tweet) => {
+    if (error) { // if there is an error console log it
+      console.log(error)
+    } else { // else show us the created tweet
+      console.log(tweet)
+    }
+    // get control of terminal back
+    // you can also just use control-c
+    db.close()
+  })
 
 db.on("error", (err)=>{
     console.log(err, "Is mongoose not running")
